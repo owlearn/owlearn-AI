@@ -1,11 +1,9 @@
-def refine_image_prompt(raw_prompt: str, style: str) -> str:
-    # Stable Diffusion 호환용 스타일 가이드 추가
+def refine_image_prompt(raw_prompt: str) -> str:
     return (
         f"A detailed illustration of the scene: \"{raw_prompt}\". "
-        f"Children's book style, warm atmosphere, "
-        f"drawing style: {style}"
+        f"Children's book style, warm atmosphere"
     )
 
 
-def generate_final_image_prompts(raw_prompts: list[str], style: str) -> list[str]:
-    return [refine_image_prompt(p, style) for p in raw_prompts]
+def generate_final_image_prompts(raw_prompts: list[str]) -> list[str]:
+    return [refine_image_prompt(p) for p in raw_prompts]

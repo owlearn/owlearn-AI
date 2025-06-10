@@ -37,10 +37,10 @@ async def create_tale(request: TaleCreateRequest):
     print(title, "동화 생성 완료")
 
     # 이미지 생성용 프롬프트 생성
-    image_prompts = generate_final_image_prompts(contents, request.style)
+    image_prompts = generate_final_image_prompts(contents)
 
     # 이미지 생성
-    image_urls = await generate_images(image_prompts)
+    image_urls = await generate_images(image_prompts, request.style)
     print("이미지 생성 완료")
 
     return TaleApiResponse(
