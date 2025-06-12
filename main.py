@@ -31,13 +31,14 @@ async def create_tale(request: TaleCreateRequest):
 
     # 데이터 추출
     title = ollama_response.get("title", "Untitled")
+    character = ollama_response.get("character", {})
     contents = ollama_response.get("contents", [])
     quizzes_raw = ollama_response.get("quizzes", [])
     quizzes = [QuizDto(**q) for q in quizzes_raw]
     print(title, "동화 생성 완료")
 
     # 이미지 생성용 프롬프트 생성
-    image_prompts = generate_final_image_prompts(contents)
+    image_prompts = generate_final_image_prompts(contents, character)
 
     # 이미지 생성
     image_urls = await generate_images(image_prompts, request.style)

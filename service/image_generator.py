@@ -11,7 +11,8 @@ from diffusers import DPMSolverMultistepScheduler
 import torch
 
 STYLE_LORA_MAP = {
-    "j_illustration": "./lora/J_illustration.safetensors"
+    "illustration": "./lora/J_illustration.safetensors",
+    "ghibli": "./lora/ghibli_style_offset.safetensors"
 }
 
 # 모델 로드

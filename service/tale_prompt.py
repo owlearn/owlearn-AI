@@ -3,15 +3,22 @@ def generate_tale_prompt(topic: str, age: int) -> str:
         f"You are an API that only returns pure JSON.\n"
         f"Create a children's story for a {age}-year-old.\n"
         f"The theme is '{topic}'.\n"
-        "The story should be divided into exactly 5 parts.\n"
-        "Each element in the 'contents' array must be a string with exactly 2 simple sentences.\n"
-        "Each sentence must be clearly separated by a period ('.').\n"
+        f"The entire story must consist of exactly 10 sentences. These sentences will be grouped into 5 parts.\n"
+        f"Each of these 5 parts will form a single string element in the 'contents' array, containing exactly 2 sentences.\n"
+        f"Each sentence within a part must be clearly separated by a period ('.').\n"
+        f"In the 'character', describe the main character with physical details (e.g., color, size, unique features) that would be helpful for drawing them consistently across scenes.\n"
         "Generate exactly 4 quiz questions based on the story.\n"
         "Each quiz must have exactly 4 answer choices, all of which are strings.\n"
         "In the 'explanation' field, explain why the correct answer is correct.\n"
         "Respond only in this JSON format:\n"
         "{\n"
         '  "title": "string",\n'
+        '  "character": [\n'
+        '    {\n'
+        '      "name": "string",\n'
+        '      "description": "string"\n'
+        '    }\n'
+        '  ],\n'
         '  "contents": ["string", "string", "string", "string", "string"],\n'
         '  "quizzes": [\n'
         "    {\n"
